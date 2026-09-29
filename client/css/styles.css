@@ -50,6 +50,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Без этого правила элементы с явным display (модалки, чат, панели)
+   остаются видимыми, потому что перебивают браузерное [hidden] { display: none }. */
+[hidden] {
+  display: none !important;
+}
+
 .sprite {
   position: absolute;
   width: 0;

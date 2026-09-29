@@ -442,7 +442,7 @@ document.addEventListener('click', (e) => {
   if (e.target.classList?.contains('overlay')) closeModals();
 });
 document.addEventListener('keydown', (e) => {
-  if (e.target.matches('input, textarea')) return;
+  if (e.target?.matches?.('input, textarea')) return;
   if (e.key === 'Escape') {
     closeModals();
     toggleChat(false);
