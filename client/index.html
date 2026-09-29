@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08080a" />
+    <meta
+      name="description"
+      content="Noir Roulette — случайный анонимный видео-чат с незнакомцем. Без регистрации и профилей. Бета-версия."
+    />
+    <title>Noir Roulette — анонимный видео-чат</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/styles.css" />  </head>
+  <body data-phase="landing">
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-mark" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="12" cy="12" r="3" fill="currentColor" />
+        <path
+          d="M12 3v3M21 12h-3M12 21v-3M3 12h3"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24">
+        <path
+          d="M12 15a4 4 0 0 0 4-4V6a4 4 0 1 0-8 0v5a4 4 0 0 0 4 4Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+        <path
+          d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-mic-off" viewBox="0 0 24 24">
+        <path
+          d="M9 6a3 3 0 0 0 5.6 1.5M15 6V4a3 3 0 0 0-5.8-1.1M8.2 8.4A3 3 0 0 0 9 11v2a3 3 0 0 0 5.1 2.1M5.5 11a6.5 6.5 0 0 0 10.9 4.8M18.5 11a6.5 6.5 0 0 1-.5 2.4M12 17.5V21M8.5 21h7M3 3l18 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-cam" viewBox="0 0 24 24">
+        <rect
+          x="2.5"
+          y="6"
+          width="12"
+          height="12"
+          rx="2.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+        />
+        <path
+          d="m14.5 12 5 3.2V8.8l-5 3.2Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-cam-off" viewBox="0 0 24 24">
+        <path
+          d="M14.5 12 19.5 15.2V8.8l-3 1.9M2.5 9.2V15.5a2.5 2.5 0 0 0 2.5 2.5h7M8.8 6h5.7a2.5 2.5 0 0 1 2.5 2.5v1.4M3 3l18 18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-skip" viewBox="0 0 24 24">
+        <path
+          d="M4 5v14l8-7-8-7ZM13 5v14l8-7-8-7Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24">
+        <path
+          d="M5 21V4m0 0h11l-2 3.5L16 11H5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path
+          d="M4 5.5h16v11H9.5L4 20.5v-15Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+        <path d="M8 9.5h8M8 12.8h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path
+          d="M12 3 20 6v5c0 5.2-3.4 8.6-8 10-4.6-1.4-8-4.8-8-10V6l8-3Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+        <path
+          d="m8.6 12 2.2 2.2 4.6-4.8"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-send" viewBox="0 0 24 24">
+        <path
+          d="m4 12 16-8-8 16-2-6-6-2Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <circle cx="9.5" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path
+          d="M3.8 20c.6-3.4 2.8-5.3 5.7-5.3s5.1 1.9 5.7 5.3M16.5 5.4a3.2 3.2 0 0 1 0 5.6M18.4 15.2c1.7.8 2.7 2.4 3 4.4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-full" viewBox="0 0 24 24">
+        <path
+          d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+    </svg>
+
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark"><svg class="ic"><use href="#i-mark" /></svg></span>
+        <span class="brand-text">
+          <strong>NOIR<em>ROULETTE</em></strong>
+          <small>анонимный видео-чат</small>
+        </span>
+        <span class="beta-tag" title="Бета-версия">beta</span>
+      </a>
+
+      <div class="topbar-right">
+        <div class="stat-pill" title="Сейчас в комнате">
+          <span class="dot dot-live"></span><strong id="onlineCount">0</strong><span>онлайн</span>
+        </div>
+        <div class="stat-pill" title="Состояние соединения">
+          <span class="dot" id="netDot"></span><span id="netText">подключение…</span>
+        </div>
+        <button class="ghost-btn" id="rulesBtn" type="button">
+          <svg class="ic"><use href="#i-shield" /></svg><span>Правила</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <!-- СЦЕНА: видео -->
+      <section class="video-frame" id="videoFrame">
+        <div class="remote-slot">
+          <video id="remoteVideo" autoplay playsinline></video>
+          <div class="slot-placeholder" id="remotePlaceholder">
+            <div class="roulette-wheel" aria-hidden="true">
+              <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+              <span class="wheel-core"><svg class="ic"><use href="#i-mark" /></svg></span>
+            </div>
+            <p class="placeholder-title" id="remotePlaceholderTitle">Нажмите «Найти случайного»</p>
+            <p class="placeholder-sub" id="remotePlaceholderSub">
+              Собеседник случайный, имя и профиль не нужны
+            </p>
+          </div>
+          <div class="peer-tag" id="peerTag" hidden>
+            <span class="peer-dot"></span><span id="peerName">Собеседник</span>
+          </div>
+          <div class="conn-badge" id="connBadge" hidden>соединение…</div>
+        </div>
+
+        <div class="local-slot" id="localSlot" hidden>
+          <video id="localVideo" autoplay playsinline muted></video>
+          <div class="local-off" id="localOff" hidden>камера выключена</div>
+          <div class="local-badge">
+            <span class="mini-ic" id="localMicState"><svg class="ic"><use href="#i-mic" /></svg></span>
+            <span class="mini-ic" id="localCamState"><svg class="ic"><use href="#i-cam" /></svg></span>
+          </div>
+        </div>
+
+        <div class="call-clock" id="callClock" hidden>00:00</div>
+      </section>
+
+      <!-- СЦЕНА: лендинг -->
+      <section class="intro" id="introPanel">
+        <p class="kicker"><span class="dot dot-live"></span> живой эфир · без регистрации</p>
+        <h1>Случайный человек.<br /><em>Одна случайная встреча.</em></h1>
+        <p class="intro-text">
+          Noir Roulette соединяет вас с незнакомцем по видео. Ни логина, ни анкеты, ни истории — только
+          разговор. Не понравилось — жмите «Далее» и крутите дальше.
+        </p>
+
+        <div class="feature-row">
+          <div class="feature">
+            <svg class="ic"><use href="#i-shield" /></svg><b>Анонимно</b><span>никаких личных данных</span>
+          </div>
+          <div class="feature">
+            <svg class="ic"><use href="#i-users" /></svg><b>Случайно</b><span>человек выбирается автоматически</span>
+          </div>
+          <div class="feature">
+            <svg class="ic"><use href="#i-chat" /></svg><b>Текст + видео</b><span>чат как запасной канал</span>
+          </div>
+        </div>
+
+        <div class="intro-actions">
+          <button class="cta" id="startBtn" type="button">
+            <svg class="ic"><use href="#i-mark" /></svg><span>Найти случайного</span>
+          </button>
+          <button class="cta-ghost" id="howBtn" type="button">Как это работает</button>
+        </div>
+
+        <p class="consent">
+          Нажимая кнопку, вы разрешаете доступ к камере и микрофону. Видео идёт по P2P (WebRTC) и не
+          записывается сервером.
+        </p>
+      </section>
+
+      <!-- СЦЕНА: поиск -->
+      <section class="searching" id="searchPanel" hidden>
+        <div class="scanner" aria-hidden="true">
+          <span class="scan-ring s1"></span><span class="scan-ring s2"></span><span class="scan-ring s3"></span>
+          <span class="scan-line"></span>
+          <span class="scan-core"><svg class="ic"><use href="#i-users" /></svg></span>
+        </div>
+        <h2>Ищем собеседника…</h2>
+        <p>В очереди <strong id="queueSize">0</strong> человек. Обычно это занимает несколько секунд.</p>
+        <button class="cta-ghost" id="cancelBtn" type="button">Отменить</button>
+      </section>
+
+      <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
+      <div class="controls" id="controls" hidden>
+        <button class="ctl" id="micBtn" type="button" data-key="M">
+          <svg class="ic"><use href="#i-mic" /></svg><span>Микрофон</span>
+        </button>
+        <button class="ctl" id="camBtn" type="button" data-key="V">
+          <svg class="ic"><use href="#i-cam" /></svg><span>Камера</span>
+        </button>
+        <button class="ctl ctl-primary" id="nextBtn" type="button" data-key="N">
+          <svg class="ic"><use href="#i-skip" /></svg><span>Далее</span>
+        </button>
+        <button class="ctl" id="chatBtn" type="button" data-key="C">
+          <svg class="ic"><use href="#i-chat" /></svg><span>Чат</span>
+          <i class="badge" id="chatBadge" hidden>0</i>
+        </button>
+        <button class="ctl" id="reportBtn" type="button" data-key="R">
+          <svg class="ic"><use href="#i-flag" /></svg><span>Жалоба</span>
+        </button>
+        <button class="ctl ctl-ghost" id="fullBtn" type="button" data-key="F" title="Во весь экран">
+          <svg class="ic"><use href="#i-full" /></svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- ЧАТ -->
+    <aside class="chat-panel" id="chatPanel" hidden aria-label="Чат с собеседником">
+      <header class="chat-head">
+        <div>
+          <b>Чат</b>
+          <span>сообщения видят только вы и собеседник</span>
+        </div>
+        <button class="icon-btn" id="chatClose" type="button" aria-label="Закрыть чат">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+      </header>
+      <div class="chat-log" id="chatLog">
+        <p class="chat-empty">Сообщений пока нет. Голос — главный канал, чат — на всякий случай.</p>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input id="chatInput" maxlength="500" autocomplete="off" placeholder="Сообщение…" aria-label="Сообщение" />
+        <button class="send-btn" type="submit" aria-label="Отправить">
+          <svg class="ic"><use href="#i-send" /></svg>
+        </button>
+      </form>
+    </aside>
+
+    <footer class="foot">
+      <span>Noir Roulette · <b id="versionTag">beta</b> · видео не записывается</span>
+      <span class="foot-keys">
+        <kbd>M</kbd> микрофон · <kbd>V</kbd> камера · <kbd>N</kbd> далее · <kbd>C</kbd> чат · <kbd>F</kbd> фуллскрин
+      </span>
+    </footer>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+
+    <!-- Правила -->
+    <div class="overlay" id="rulesModal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+        <button class="icon-btn modal-x" id="rulesClose" type="button" aria-label="Закрыть">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+        <span class="modal-icon"><svg class="ic"><use href="#i-shield" /></svg></span>
+        <h3 id="rulesTitle">Правила общения</h3>
+        <ul class="rules-list">
+          <li>Не сообщайте паспортные данные, адреса, пароли и данные карт — никому.</li>
+          <li>Запрещены угрозы, оскорбления, сексуальный контент с несовершеннолетними и спам.</li>
+          <li>Разговор идёт один на один: не записывайте и не транслируйте его без согласия собеседника.</li>
+          <li>На любой дискомфорт можно нажать «Далее» или «Жалоба» — соединение разорвётся сразу.</li>
+        </ul>
+        <p class="modal-note">
+          Это бета. Жалобы фиксируются только в памяти сервера и не попадают в базу — постоянная модерация
+          появится в следующих версиях.
+        </p>
+        <button class="cta cta-full" id="rulesOk" type="button">Понятно</button>
+      </div>
+    </div>
+
+    <!-- Жалоба -->
+    <div class="overlay" id="reportModal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+        <h3 id="reportTitle">Пожаловаться на собеседника</h3>
+        <p class="modal-note">Выберите причину — соединение с этим человеком сразу завершится.</p>
+        <div class="report-grid">
+          <button class="report-opt" data-reason="harassment" type="button">Оскорбления, травля</button>
+          <button class="report-opt" data-reason="nudity" type="button">Неприемлемый контент</button>
+          <button class="report-opt" data-reason="scam" type="button">Мошенничество, ссылки</button>
+          <button class="report-opt" data-reason="minors" type="button">Несовершеннолетние</button>
+          <button class="report-opt" data-reason="spam" type="button">Спам, реклама</button>
+          <button class="report-opt" data-reason="other" type="button">Другое</button>
+        </div>
+        <button class="ghost-btn modal-cancel" id="reportCancel" type="button">Отмена</button>
+      </div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

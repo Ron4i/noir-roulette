@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+coverage/
+*.local
+
+# Черновой макет, из которого вырос клиент; в репозитории ему не место.
+index.html.mockup-backup/
