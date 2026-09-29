@@ -53,6 +53,7 @@ const el = {
 const state = {
   phase: 'landing', // landing | searching | call
   stream: null,
+  streamReady: null,
   peer: null,
   isInitiator: false,
   micOn: true,
@@ -140,12 +141,6 @@ function publishMediaState() {
 /* ------------------------------------------------------------ очередь/матч */
 
 async function startSearching({ fresh = true } = {}) {
-  try {
-    await ensureStream();
-  } catch {
-    return;
-  }
-
   if (fresh) {
     teardownPeer();
     clearChat();
@@ -158,6 +153,10 @@ async function startSearching({ fresh = true } = {}) {
   el.connBadge.hidden = true;
   setNet('warn', 'в очереди');
   signaling.send({ type: 'queue:join' });
+
+  // Камера запрашивается параллельно поиску: если доступ не выдан,
+  // пользователь всё равно попадёт в очередь и сможет общаться в чате.
+  await ensureStream().catch(() => {});
 }
 
 function teardownPeer() {
@@ -175,7 +174,9 @@ async function onMatch(msg) {
   state.iceServers = msg.iceServers || state.iceServers;
 
   clearChat();
-  el.localOff.hidden = state.camOn;
+  el.localOff.hidden = state.camOn && Boolean(state.stream);
+  const peerColor = msg.peer?.color?.name || 'неизвестный цвет';
+  showPlaceholder('Соединение с собеседником…', `Ваш собеседник — ${peerColor}`);
 
   const peer = new Peer({ iceServers: state.iceServers });
   state.peer = peer;
@@ -190,6 +191,9 @@ async function onMatch(msg) {
   });
   peer.on('conn', ({ state: conn }) => {
     setNet(conn === 'connected' ? 'ok' : 'warn', conn === 'connected' ? 'p2p' : conn);
+    if (conn === 'connected' && el.remoteVideo.srcObject === null) {
+      showPlaceholder('Собеседник без видео', 'Продолжайте общение в чате справа');
+    }
   });
   peer.on('failed', () => {
     toast('Соединение не установилось. Ищем заново…', { tone: 'warn' });
@@ -197,10 +201,20 @@ async function onMatch(msg) {
   });
 
   peer.create();
-  await peer.setLocalStream(state.stream);
+  if (state.stream) {
+    await peer.setLocalStream(state.stream);
+  }
+  // Разрешение на камеру могло прийти уже после матча — догоняем поток.
+  state.streamReady = ensureStream()
+    .then(() => state.peer)
+    .then((live) => live && live === state.peer ? live.setLocalStream(state.stream) : null)
+    .catch(() => {
+      setNet('bad', 'только чат');
+      showPlaceholder('Видео недоступно', 'Общайтесь текстом в чате справа');
+    });
 
   if (msg.peer) {
-    el.peerName.textContent = `Собеседник · ${msg.peer.name}`;
+    el.peerName.textContent = `Собеседник · ${peerColor}`;
     el.peerTag.hidden = false;
   }
 

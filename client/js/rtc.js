@@ -60,6 +60,7 @@ export class Peer extends EventTarget {
 
   /** @param {MediaStream} stream */
   async setLocalStream(stream) {
+    if (!stream) return;
     this.localStream = stream;
     const pc = this.pc || this.create();
     for (const track of stream.getTracks()) {
