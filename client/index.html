@@ -10,7 +10,8 @@
     />
     <title>Noir Roulette — анонимный видео-чат</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/css/styles.css" />  </head>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
   <body data-phase="landing">
     <svg class="sprite" aria-hidden="true" focusable="false">
       <symbol id="i-mark" viewBox="0 0 24 24">
@@ -152,6 +153,82 @@
           stroke-linejoin="round"
         />
       </symbol>
+      <symbol id="i-screen" viewBox="0 0 24 24">
+        <rect x="2.5" y="4" width="19" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path d="M8.5 20.5h7M12 17v3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-stop-screen" viewBox="0 0 24 24">
+        <rect x="2.5" y="4" width="19" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path d="M8.5 20.5h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        <path d="M9.5 9.5 14.5 14.5M14.5 9.5 9.5 14.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24">
+        <path
+          d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h7M15 17h5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+        <circle cx="15" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <circle cx="9" cy="12" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <circle cx="13" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7" />
+      </symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24">
+        <path
+          d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9 12 3.5Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-stat" viewBox="0 0 24 24">
+        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-switch" viewBox="0 0 24 24">
+        <path
+          d="M4 8h13l-3-3M20 16H7l3 3"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path
+          d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="i-speaker" viewBox="0 0 24 24">
+        <path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4v-5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+        <path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.6 7.6 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path
+          d="M12 20s-7-4.4-7-9.2A4 4 0 0 1 12 8a4 4 0 0 1 7 2.8C19 15.6 12 20 12 20Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.7" />
+        <path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </symbol>
     </svg>
 
     <div class="bg-grid" aria-hidden="true"></div>
@@ -171,9 +248,19 @@
         <div class="stat-pill" title="Сейчас в комнате">
           <span class="dot dot-live"></span><strong id="onlineCount">0</strong><span>онлайн</span>
         </div>
-        <div class="stat-pill" title="Состояние соединения">
+        <div class="stat-pill net-pill" id="netPill" title="Состояние соединения">
           <span class="dot" id="netDot"></span><span id="netText">подключение…</span>
         </div>
+        <div class="stat-pill quality-pill" id="qualityPill" hidden title="Качество связи с собеседником">
+          <span class="q-bars" id="qualityBars"><i></i><i></i><i></i></span>
+          <span id="qualityText">—</span>
+        </div>
+        <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="Сменить тему" title="Тема">
+          <svg class="ic"><use href="#i-sun" id="themeIcon" /></svg>
+        </button>
+        <button class="icon-btn" id="settingsBtn" type="button" aria-label="Настройки" title="Настройки" data-key="S">
+          <svg class="ic"><use href="#i-sliders" /></svg>
+        </button>
         <button class="ghost-btn" id="rulesBtn" type="button">
           <svg class="ic"><use href="#i-shield" /></svg><span>Правила</span>
         </button>
@@ -182,7 +269,7 @@
 
     <main class="stage">
       <!-- СЦЕНА: видео -->
-      <section class="video-frame" id="videoFrame">
+      <section class="video-frame" id="videoFrame" data-fx="none">
         <div class="remote-slot">
           <video id="remoteVideo" autoplay playsinline></video>
           <div class="slot-placeholder" id="remotePlaceholder">
@@ -194,11 +281,16 @@
             <p class="placeholder-sub" id="remotePlaceholderSub">
               Собеседник случайный, имя и профиль не нужны
             </p>
+            <div class="live-topics" id="liveTopics" hidden></div>
           </div>
           <div class="peer-tag" id="peerTag" hidden>
             <span class="peer-dot"></span><span id="peerName">Собеседник</span>
           </div>
           <div class="conn-badge" id="connBadge" hidden>соединение…</div>
+          <div class="screen-flag" id="screenFlag" hidden>
+            <svg class="ic"><use href="#i-screen" /></svg><span>Показывает экран</span>
+          </div>
+          <div class="caption-overlay" id="captionOverlay" hidden aria-live="polite"></div>
         </div>
 
         <div class="local-slot" id="localSlot" hidden>
@@ -211,6 +303,14 @@
         </div>
 
         <div class="call-clock" id="callClock" hidden>00:00</div>
+        <div class="fx-strip" id="fxStrip" hidden>
+          <button class="fx-opt is-on" data-fx="none" type="button">Без</button>
+          <button class="fx-opt" data-fx="warm" type="button">Тёплый</button>
+          <button class="fx-opt" data-fx="noir" type="button">Нуар</button>
+          <button class="fx-opt" data-fx="vivid" type="button">Яркий</button>
+          <button class="fx-opt" data-fx="soft" type="button">Мягкий</button>
+          <button class="fx-opt" data-fx="mono" type="button">Ч/Б</button>
+        </div>
       </section>
 
       <!-- СЦЕНА: лендинг -->
@@ -231,6 +331,37 @@
           </div>
           <div class="feature">
             <svg class="ic"><use href="#i-chat" /></svg><b>Текст + видео</b><span>чат как запасной канал</span>
+          </div>
+        </div>
+
+        <div class="prefs-box" id="prefsBox">
+          <div class="prefs-head">
+            <span class="prefs-label">
+              <svg class="ic"><use href="#i-sliders" /></svg> Как ищем собеседника
+            </span>
+            <button class="link-btn" id="prefsToggle" type="button" aria-expanded="false">настроить</button>
+          </div>
+          <div class="mode-row" role="radiogroup" aria-label="Режим подбора">
+            <button class="mode-opt is-on" data-mode="random" type="button" role="radio" aria-checked="true">
+              <svg class="ic"><use href="#i-spark" /></svg><b>Случайно</b><span>кто угодно</span>
+            </button>
+            <button class="mode-opt" data-mode="interests" type="button" role="radio" aria-checked="false">
+              <svg class="ic"><use href="#i-heart" /></svg><b>По интересам</b><span>общие темы</span>
+            </button>
+          </div>
+          <div class="topics-wrap" id="topicsWrap" hidden>
+            <p class="topics-hint">Выберите до 3 тем — так подбор точнее.</p>
+            <div class="topics-grid" id="topicsGrid"></div>
+          </div>
+          <div class="pref-extras" id="prefExtras" hidden>
+            <label class="pref-check">
+              <input type="checkbox" id="require18" />
+              <span>Только 18+</span>
+            </label>
+            <label class="pref-check">
+              <input type="checkbox" id="nearbyOnly" />
+              <span>Только из моего региона</span>
+            </label>
           </div>
         </div>
 
@@ -261,25 +392,42 @@
 
       <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
       <div class="controls" id="controls" hidden>
-        <button class="ctl" id="micBtn" type="button" data-key="M">
-          <svg class="ic"><use href="#i-mic" /></svg><span>Микрофон</span>
-        </button>
-        <button class="ctl" id="camBtn" type="button" data-key="V">
-          <svg class="ic"><use href="#i-cam" /></svg><span>Камера</span>
-        </button>
-        <button class="ctl ctl-primary" id="nextBtn" type="button" data-key="N">
-          <svg class="ic"><use href="#i-skip" /></svg><span>Далее</span>
-        </button>
-        <button class="ctl" id="chatBtn" type="button" data-key="C">
-          <svg class="ic"><use href="#i-chat" /></svg><span>Чат</span>
-          <i class="badge" id="chatBadge" hidden>0</i>
-        </button>
-        <button class="ctl" id="reportBtn" type="button" data-key="R">
-          <svg class="ic"><use href="#i-flag" /></svg><span>Жалоба</span>
-        </button>
-        <button class="ctl ctl-ghost" id="fullBtn" type="button" data-key="F" title="Во весь экран">
-          <svg class="ic"><use href="#i-full" /></svg>
-        </button>
+        <div class="ctl-group">
+          <button class="ctl" id="micBtn" type="button" data-key="M" title="Микрофон (M)">
+            <svg class="ic"><use href="#i-mic" /></svg><span>Микрофон</span>
+          </button>
+          <button class="ctl" id="camBtn" type="button" data-key="V" title="Камера (V)">
+            <svg class="ic"><use href="#i-cam" /></svg><span>Камера</span>
+          </button>
+          <button class="ctl" id="screenBtn" type="button" data-key="D" title="Демонстрация экрана (D)" hidden>
+            <svg class="ic"><use href="#i-screen" /></svg><span>Экран</span>
+          </button>
+        </div>
+        <div class="ctl-group">
+          <button class="ctl ctl-primary" id="nextBtn" type="button" data-key="N" title="Следующий (N)">
+            <svg class="ic"><use href="#i-skip" /></svg><span>Далее</span>
+          </button>
+        </div>
+        <div class="ctl-group">
+          <button class="ctl" id="chatBtn" type="button" data-key="C" title="Чат (C)">
+            <svg class="ic"><use href="#i-chat" /></svg><span>Чат</span>
+            <i class="badge" id="chatBadge" hidden>0</i>
+          </button>
+          <button class="ctl" id="fxBtn" type="button" data-key="X" title="Эффекты (X)" hidden>
+            <svg class="ic"><use href="#i-spark" /></svg><span>Эффекты</span>
+          </button>
+          <button class="ctl" id="statsBtn" type="button" data-key="I" title="Статистика (I)" hidden>
+            <svg class="ic"><use href="#i-stat" /></svg><span>Стата</span>
+          </button>
+          <button class="ctl" id="reportBtn" type="button" data-key="R" title="Жалоба (R)">
+            <svg class="ic"><use href="#i-flag" /></svg><span>Жалоба</span>
+          </button>
+        </div>
+        <div class="ctl-group ctl-group-end">
+          <button class="ctl ctl-ghost" id="fullBtn" type="button" data-key="F" title="Во весь экран (F)">
+            <svg class="ic"><use href="#i-full" /></svg>
+          </button>
+        </div>
       </div>
     </main>
 
@@ -290,9 +438,14 @@
           <b>Чат</b>
           <span>сообщения видят только вы и собеседник</span>
         </div>
-        <button class="icon-btn" id="chatClose" type="button" aria-label="Закрыть чат">
-          <svg class="ic"><use href="#i-x" /></svg>
-        </button>
+        <div class="chat-head-tools">
+          <button class="icon-btn tts-btn" id="ttsBtn" type="button" aria-label="Озвучивать сообщения" title="Озвучивать входящие сообщения">
+            <svg class="ic"><use href="#i-speaker" /></svg>
+          </button>
+          <button class="icon-btn" id="chatClose" type="button" aria-label="Закрыть чат">
+            <svg class="ic"><use href="#i-x" /></svg>
+          </button>
+        </div>
       </header>
       <div class="chat-log" id="chatLog">
         <p class="chat-empty">Сообщений пока нет. Голос — главный канал, чат — на всякий случай.</p>
@@ -307,8 +460,17 @@
 
     <footer class="foot">
       <span>Noir Roulette · <b id="versionTag">beta</b> · видео не записывается</span>
+      <span class="foot-links">
+        <button class="link-btn" id="roomsBtn" type="button">
+          <svg class="ic"><use href="#i-users" /></svg> Комнаты
+        </button>
+        <button class="link-btn" id="statsOpenBtn" type="button">
+          <svg class="ic"><use href="#i-stat" /></svg> Статистика
+        </button>
+      </span>
       <span class="foot-keys">
-        <kbd>M</kbd> микрофон · <kbd>V</kbd> камера · <kbd>N</kbd> далее · <kbd>C</kbd> чат · <kbd>F</kbd> фуллскрин
+        <kbd>M</kbd> микрофон · <kbd>V</kbd> камера · <kbd>D</kbd> экран · <kbd>N</kbd> далее · <kbd>C</kbd> чат ·
+        <kbd>F</kbd> фуллскрин
       </span>
     </footer>
 
@@ -352,6 +514,133 @@
         <button class="ghost-btn modal-cancel" id="reportCancel" type="button">Отмена</button>
       </div>
     </div>
+
+    <!-- Настройки -->
+    <div class="overlay" id="settingsModal" hidden>
+      <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+        <button class="icon-btn modal-x" id="settingsClose" type="button" aria-label="Закрыть">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+        <h3 id="settingsTitle">Настройки</h3>
+
+        <div class="set-group">
+          <label class="set-row">
+            <span class="set-name">Камера</span>
+            <select id="camSelect" class="set-select"></select>
+          </label>
+          <label class="set-row">
+            <span class="set-name">Микрофон</span>
+            <select id="micSelect" class="set-select"></select>
+          </label>
+          <label class="set-row">
+            <span class="set-name">Качество видео</span>
+            <select id="qualitySelect" class="set-select">
+              <option value="360">360p — экономно</option>
+              <option value="480">480p</option>
+              <option value="720" selected>720p — рекомендуется</option>
+              <option value="1080">1080p — чётко</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="set-group">
+          <label class="set-check">
+            <input type="checkbox" id="optMirror" checked />
+            <span>Зеркалить своё видео</span>
+          </label>
+          <label class="set-check">
+            <input type="checkbox" id="optTts" />
+            <span>Озвучивать входящие сообщения</span>
+          </label>
+          <label class="set-check">
+            <input type="checkbox" id="optCaptions" />
+            <span>Показывать текст сообщений поверх видео</span>
+          </label>
+          <label class="set-check">
+            <input type="checkbox" id="optReduceData" />
+            <span>Экономить трафик: останавливать видео в фоне</span>
+          </label>
+        </div>
+
+        <div class="set-group">
+          <div class="set-row">
+            <span class="set-name">Тема</span>
+            <div class="seg" id="themeSeg">
+              <button class="seg-opt is-on" data-theme="dark" type="button">Тёмная</button>
+              <button class="seg-opt" data-theme="light" type="button">Светлая</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="ghost-btn modal-cancel" id="settingsReset" type="button">Сбросить статистику</button>
+        <button class="cta cta-full" id="settingsOk" type="button">Готово</button>
+      </div>
+    </div>
+
+    <!-- Статистика -->
+    <div class="overlay" id="statsModal" hidden>
+      <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+        <button class="icon-btn modal-x" id="statsClose" type="button" aria-label="Закрыть">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+        <h3 id="statsTitle">Ваша статистика</h3>
+        <p class="modal-note">Считается только в этом браузере и никуда не отправляется.</p>
+        <div class="stat-grid" id="localStatsGrid"></div>
+        <h4 class="modal-sub">История разговоров</h4>
+        <div class="history-list" id="historyList"></div>
+        <button class="cta cta-full" id="statsOk" type="button">Закрыть</button>
+      </div>
+    </div>
+
+    <!-- Комнаты -->
+    <div class="overlay" id="roomsModal" hidden>
+      <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="roomsTitle">
+        <button class="icon-btn modal-x" id="roomsClose" type="button" aria-label="Закрыть">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+        <h3 id="roomsTitle">Комнаты</h3>
+        <p class="modal-note">Общий текстовый чат с несколькими людьми. Видео в комнатах не передаётся.</p>
+
+        <form class="room-create" id="roomCreateForm">
+          <input id="roomTitle" maxlength="40" placeholder="Название комнаты" aria-label="Название комнаты" />
+          <select id="roomTopic" class="set-select" aria-label="Тема комнаты"></select>
+          <button class="cta cta-compact" type="submit">
+            <svg class="ic"><use href="#i-plus" /></svg><span>Создать</span>
+          </button>
+        </form>
+
+        <div class="room-search">
+          <svg class="ic"><use href="#i-search" /></svg>
+          <input id="roomSearch" placeholder="Поиск по комнатам" aria-label="Поиск комнаты" />
+        </div>
+
+        <div class="room-list" id="roomList"></div>
+        <button class="cta cta-full" id="roomsOk" type="button">Закрыть</button>
+      </div>
+    </div>
+
+    <!-- Активная комната -->
+    <aside class="room-panel" id="roomPanel" hidden aria-label="Комната">
+      <header class="chat-head">
+        <div>
+          <b id="roomTitleLabel">Комната</b>
+          <span id="roomMetaLabel">участников: 0</span>
+        </div>
+        <button class="icon-btn" id="roomInvite" type="button" aria-label="Позвать собеседника в комнату" title="Позвать собеседника в комнату">
+          <svg class="ic"><use href="#i-plus" /></svg>
+        </button>
+        <button class="icon-btn" id="roomLeave" type="button" aria-label="Покинуть комнату">
+          <svg class="ic"><use href="#i-x" /></svg>
+        </button>
+      </header>
+      <div class="chat-log" id="roomLog"></div>
+      <form class="chat-form" id="roomForm">
+        <input id="roomInput" maxlength="500" autocomplete="off" placeholder="Сообщение в комнату…" aria-label="Сообщение" />
+        <button class="send-btn" type="submit" aria-label="Отправить">
+          <svg class="ic"><use href="#i-send" /></svg>
+        </button>
+      </form>
+    </aside>
 
     <script type="module" src="/js/main.js"></script>
   </body>
