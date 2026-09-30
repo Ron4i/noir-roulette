@@ -77,7 +77,7 @@ function setPhase(phase) {
   el.body.dataset.phase = phase;
   el.intro.hidden = phase !== 'landing';
   el.search.hidden = phase !== 'searching';
-  el.videoFrame.hidden = false;
+  el.videoFrame.hidden = phase !== 'call';
   el.controls.hidden = phase !== 'call';
   if (phase === 'landing') {
     showPlaceholder('Нажмите «Найти случайного»', 'Собеседник случайный, имя и профиль не нужны');

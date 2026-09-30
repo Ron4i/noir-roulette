@@ -47,7 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  min-height: 100%;
 }
 
 /* Без этого правила элементы с явным display (модалки, чат, панели)
@@ -245,7 +245,7 @@ body {
   margin: 0 auto;
   padding: 0 clamp(16px, 3vw, 34px) 30px;
   display: grid;
-  grid-template-rows: minmax(340px, 1fr) auto;
+  grid-template-rows: auto auto;
   gap: 18px;
   min-height: 0;
 }
@@ -486,15 +486,34 @@ body[data-phase='searching'] .roulette-wheel {
   grid-row: 1;
   align-self: center;
   justify-self: center;
+  width: 100%;
   max-width: 780px;
   text-align: center;
-  padding: clamp(20px, 4vw, 40px);
+  padding: clamp(28px, 6vh, 64px) clamp(16px, 3vw, 40px);
   animation: rise 0.55s var(--ease) both;
 }
 
 body[data-phase='searching'] .intro,
 body[data-phase='call'] .intro {
   display: none;
+}
+
+/* Видео-рамка нужна только во время разговора: на лендинге и в поиске
+   она наезжала на текст, потому что делила с ним одну строку грида. */
+body[data-phase='landing'] .video-frame,
+body[data-phase='searching'] .video-frame {
+  display: none;
+}
+
+body[data-phase='landing'] .controls,
+body[data-phase='searching'] .controls {
+  display: none;
+}
+
+/* Лендинг и поиск занимают всю ширину первой строки. */
+body[data-phase='landing'] .stage,
+body[data-phase='searching'] .stage {
+  grid-template-rows: auto;
 }
 
 @keyframes rise {
@@ -520,11 +539,12 @@ body[data-phase='call'] .intro {
 }
 
 .intro h1 {
-  margin: 0 0 16px;
-  font-size: clamp(31px, 6vw, 58px);
-  line-height: 1.04;
+  margin: 0 0 18px;
+  font-size: clamp(30px, 5.2vw, 52px);
+  line-height: 1.08;
   letter-spacing: -0.03em;
   font-weight: 700;
+  text-wrap: balance;
 }
 
 .intro h1 em {
@@ -541,7 +561,7 @@ body[data-phase='call'] .intro {
 
 .feature-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 28px;
 }
@@ -549,7 +569,8 @@ body[data-phase='call'] .intro {
 .feature {
   display: grid;
   gap: 3px;
-  padding: 14px;
+  align-content: start;
+  padding: 16px;
   border-radius: var(--r);
   border: 1px solid var(--line);
   background: var(--panel);
@@ -1113,9 +1134,31 @@ body[data-phase='call'] .intro {
 
 /* ---------------------------------------------------------- адаптив */
 
+@media (max-width: 640px) {
+  .feature-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .feature .ic {
+    margin-bottom: 0;
+  }
+
+  .feature span {
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 780px) {
   .stage {
-    grid-template-rows: minmax(240px, 46vh) auto auto;
+    grid-template-rows: minmax(240px, 46vh) auto;
   }
 
   .intro,
