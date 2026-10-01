@@ -68,6 +68,12 @@
   box-sizing: border-box;
 }
 
+/* Авторские правила вроде `.overlay { display: grid }` сильнее браузерного
+   `[hidden] { display: none }`, поэтому атрибут hidden нужно усилить явно. */
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   height: 100%;

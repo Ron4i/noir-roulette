@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Вопрос или предложение
+    url: https://github.com/Ron4i/noir-roulette/issues/new?labels=question&template=other_issue.md
+    about: Не баг и не фича — задайте вопрос или предложите что-то ещё.
+  - name: Написать в Telegram
+    url: https://t.me/noir_roulette
+    about: Быстрый канал проекта: анонсы, новости и обратная связь.

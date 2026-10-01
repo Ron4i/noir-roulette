@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Noir Roulette">
+  <title>Noir Roulette</title>
+  <defs>
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8ff3e"/>
+      <stop offset="1" stop-color="#8fbf00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Кольцо рулетки: пунктир обходит весь круг, как барабан. -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="url(#lens)" stroke-width="3"
+          stroke-dasharray="4 5.5" stroke-linecap="round"/>
+
+  <!-- Объектив камеры в центре: анонимный собеседник. -->
+  <circle cx="32" cy="32" r="13" fill="#08080a" stroke="#d8ff3e" stroke-width="2.5"/>
+  <circle cx="32" cy="32" r="5.5" fill="url(#lens)"/>
+
+  <!-- Указатель наверху. -->
+  <path d="M32 2.5 L37.5 11 L26.5 11 Z" fill="#d8ff3e"/>
+</svg>
